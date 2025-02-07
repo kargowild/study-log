@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-
-<details>
-<summary>2회독 때 작성 예정</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 기계어 명령
 - CPU 내에서 수행되는 명령 (일반명령)
   - CPU 내에서만 수행되므로 명령의 수행 속도가 매우 빠르다. (레지스터 사용 포함)

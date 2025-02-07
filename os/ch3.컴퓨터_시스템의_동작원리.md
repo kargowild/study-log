@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-
-<details>
-<summary>2회독 때 작성 예정</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 컴퓨터 시스템의 구조
 - 내부 장치
   - CPU, 메모리

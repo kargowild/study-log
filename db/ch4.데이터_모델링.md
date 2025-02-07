@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 데이터 모델링
 - 현실 세계에 존재하는 데이터를 컴퓨터 세계의 DB로 옮기는 변환 과정
   - 데이터 모델링은 DB 설계의 핵심 과정

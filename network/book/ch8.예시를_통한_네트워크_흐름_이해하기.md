@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### OSI 7 계층에서 의문
 - 네트워크 계층은 왠에서 다른 네트워크로 데이터를 전달을 담당하고, 데이터 링크은 랜에서 데이터 송수신을 담당
   - 그럼 하나의 랜에 포함된 컴퓨터끼리의 통신에서는 네트워크 계층이 필요 없나?

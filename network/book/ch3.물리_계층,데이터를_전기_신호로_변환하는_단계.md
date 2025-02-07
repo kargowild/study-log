@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 물리 계층
 - 컴퓨터들을 물리적으로 연결하거나 데이터를 전기 신호로 변환하고 제어하는 역할
 - 아래와 같은 과정을 통해 메시지 전달

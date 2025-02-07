@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>TCP와 UDP의 차이</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 전송 계층
 - 데이터를 목적지에 문제없이 전달하는 것을 목표로 한다.
 - 데이터를 전달하는 목적에 따라 연결형과 비연결형 통신으로 나뉜다.

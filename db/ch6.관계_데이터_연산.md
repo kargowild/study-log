@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 관계 데이터 연산
 - 관계 데이터 모델에서 데이터를 얻기 위해 릴레이션에 필요한 처리 요구를 수행하는 것
 - DB 시스템의 구성 요소 중 데이터 언어의 역할

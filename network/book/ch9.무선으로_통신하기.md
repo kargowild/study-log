@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 무선 랜
 - 유선 랜과 달리 케이블 없이 통신하는 네트워크
 - 무선 랜은 무선 액세스 포인트(공유기)를 통해 인터넷에 연결된다.

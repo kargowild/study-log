@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 데이터 링크 계층
 - 네트워크에서 데이터를 관리하고 전달하는 계층
 - 데이터를 작은 프레임 단위로 분할

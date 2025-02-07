@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 라우터
 - 데이터가 어떤 경로로 전달되어야 하는지를 알려주는 네비게이션 역할
 - 어떤 길이 가장 빠른 길인지 찾는 과정을 라우팅이라고 한다.

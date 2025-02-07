@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 멀티태스킹
 - 하나의 CPU 코어로 여러 프로그램을 동시에 실행하는 기술
 - 소프트웨어 기반으로 CPU 시간을 분할하여 각 작업에 할당

@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 파일 시스템
 - 응용프로그램마다 파일을 따로 유지하는 특징(?) 때문에 다음과 같은 문제가 발생 
   - 같은 내용의 데이터가 여러 파일에 중복 저장

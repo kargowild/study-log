@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 테이블 생성 시 외래키 제약조건 정의
 - 삭제 관련
   - ON DELETE NO ACTION (기본)

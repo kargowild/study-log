@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 네트워크란?
 각종 통신 장비들이 서로 그물망처럼 연결되어 데이터를 교환하거나 협력하여 일할 수 있게 해주는 통신망.
 

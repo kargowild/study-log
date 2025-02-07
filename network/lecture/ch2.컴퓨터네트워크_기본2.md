@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### Creating a network app
 - 네트워크를 활용한 프로그램을 개발할 때, application layer 이후는 고려할 필요가 없다.
   - application layer 이후 동작은 네트워크 시스템에서 이미 다 공통적으로 구축해놨기 때문

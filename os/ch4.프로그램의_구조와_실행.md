@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-
-<details>
-<summary>2회독 때 작성 예정</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 프로그램의 주소 영역
 - 프로그램이 CPU에서 명령을 수행하려면 해당 명령을 담은 프로그램의 주소 영역이 메모리에 올라가 있어야 한다.
   - 프로세스가 할당받은 메모리 영역을 프로그램의 주소 영역이라고 이해하면 될 듯

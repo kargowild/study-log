@@ -1,15 +1,3 @@
-# 질답 형식으로 요약
-(2회독 때 추가 예정)
-<details>
-<summary>...</summary>
-
-...
-</details>
-
-<hr style="height: 3px; background-color: black; border: none;">
-
-# 이론 정리
-
 ### 프로토콜
 컴퓨터나 원거리 통신 장비에서 메시지를 주고 받는 양식과 규칙의 체계. 
 네트워크에서는 대표적인 프로토콜로 OSI 7계층과 TCP/IP 4계층이 있다.
