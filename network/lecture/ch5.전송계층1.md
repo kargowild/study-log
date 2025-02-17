@@ -18,7 +18,7 @@
   - transmission time보다 RTT가 훨씬 길기 때문에 퍼모먼스가 매우 나쁘다.
 - sender가 ACK를 받기 전에, multiple 패킷을 보내는 pipelining을 사용하자!
   - pipelining의 퍼포먼스 = (window size * transmission time) / (RTT + transmission time)
-  - Go-Back-N, selective repeat 방식이 있다. 
+  - Go-Back-N, selective repeat 방식이 있다. 각 방식의 장단점을 비교할 수 있어야 한다.
   - RDT3.0에서는 seq#를 0과 1로 표현 가능했지만, 여기서는 이 값이 늘어나야 한다.
   - sender나 receiver단에 버퍼를 추가해야 한다.
 
@@ -42,7 +42,7 @@
   - sender는 보내긴 했지만 아직 ACK를 받지 못한 모든 패킷에 대해 개별적으로 타이머를 관리해야 한다. (이것이 매우 큰 단점이라 TCP에서는 이를 개선)
     - 순서에 맞지 않게 ACK를 받더라도 해당 패킷의 타이머를 제거할 수 있다.
     - window 가장 왼쪽의 패킷에 대해 ACK를 받으면, window를 오른쪽으로 슬라이딩할 수 있다.
-    - 이 떄, 늦게 보낸 패킷에 대해 ACK를 미리 받아놨다면, 여러 칸에 대한 슬라이딩을 한 번에 할 수도 있다.
+    - 이 때, 늦게 보낸 패킷에 대해 ACK를 미리 받아놨다면, 여러 칸에 대한 슬라이딩을 한 번에 할 수도 있다.
 - Go-Back-N과 마찬가지로 window 방식을 사용하며, sender는 window의 패킷을 버퍼에 저장해두어야 한다.
 - window size가 n일 때, seq#는 2n까지만 사용해도 문제없다.
   - seq#가 2n보다 작아지면 새로 들어오는 패킷과 duplicated 패킷을 구별하지 못하는 상황이 발생할 수 있다. -> 버퍼에 저장할 패킷을 정확히 선별 불가

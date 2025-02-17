@@ -17,6 +17,9 @@
     - no flow control, no congestion control
     - 즉 sender는 receiver나 네트워크 상태를 고려하지 않고 마구잡이로 데이터를 보낼 수 있다.
     - 패킷 몇 개 유실돼도 사람이 인지하지 못하는 음성통화와 같은 경우에 사용.
+    - DNS는 왜 UDP를 쓸까? (출처 : 구글링)
+      - IP를 한 번만 넘겨주면 끝이므로 굳이 TCP 연결을 맺는 것은 과하다.
+      - TCP 에서는 buffer를 위해 자원을 할당하므로 DNS 서버가 TCP를 쓰면 동시에 받을 수 있는 사용자 요청 수가 제한된다.
 
 ### Network Core
 - 라우터들이 얽혀있는 구조
