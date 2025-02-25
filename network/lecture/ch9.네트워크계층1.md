@@ -2,7 +2,8 @@
 - Application layer는 packet loss 또는 error같은 건 신경쓰지 않는다.
   - sender가 소켓에 데이터를 write()하면, receiver 쪽 소켓에서 read()할 때 해당 데이터가 무조건 뿅 하고 나온다고 생각한다.
 - Transport layer는 sender가 보낸 세그먼트가 어떤 경로로 receiver에게 도착할 수 있는지 신경쓰지 않는다.
-  - 그저 packet loss 또는 error가 발생했는 지와 같이 end to end간 소통에 문제가 없는지만 고려한다.
+  - 어떤 경로를 통했든 packet loss가 없는 한, 일단 receiver 쪽으로 잘 도착할 것이라 생각한다.
+  - 따라서 포트 번호는 일단 receiver의 transport layer까지 세그먼트가 잘 도착했다는 가정하에 활용할 수 있는 번호다.
 - Network layer부터는 정말 어떤 라우터를 거쳐 데이터가 receiver에게 전달되고 있는지를 배운다.
   - 라우터는 패킷을 받아 패킷의 목적지 방향을 찾아서 forwarding할 수 있어야 한다.
   - 따라서 라우터도 Network layer까지는 처리할 수 있어야 한다.
