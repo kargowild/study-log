@@ -1,7 +1,3 @@
-### 질문 출처
-https://github.com/4z7l/tech_interview.zip/blob/main/
-
-
 # 전산 기본
 ### OSI 7계층에 대해서 설명해주세요.
 ### TCP/IP 4계층에 대해서 설명해주세요.
