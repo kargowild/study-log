@@ -15,7 +15,7 @@
   - L : packet length in bits
   - R : transmission rate, bps
 - RDT3.0의 퍼포먼스 = (transmission time) / (RTT + transmission time)
-  - transmission time보다 RTT가 훨씬 길기 때문에 퍼모먼스가 매우 나쁘다.
+  - transmission time보다 RTT가 훨씬 길기 때문에 퍼포먼스가 매우 나쁘다.
 - sender가 ACK를 받기 전에, multiple 패킷을 보내는 pipelining을 사용하자!
   - pipelining의 퍼포먼스 = (window size * transmission time) / (RTT + transmission time)
   - Go-Back-N, selective repeat 방식이 있다. 각 방식의 장단점을 비교할 수 있어야 한다.

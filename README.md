@@ -1,7 +1,7 @@
 # study-log
 CS 5대 과목 위주로 공부한 내용을 기록하는 저장소
 
-### 질문 출처
+### 질문 작성에 참고한 레포지토리
 https://github.com/4z7l/tech_interview.zip/blob/main/
 
 ### 데이터베이스
