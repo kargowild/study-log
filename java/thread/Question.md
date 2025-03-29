@@ -59,7 +59,9 @@ unpark() 또는 interrupt()로 이를 깨울 수 있어 synchronized와 달리 �
 
 ### ReentrantLock에 대해 설명해주세요.
 synchronized의 무한 대기 문제와 공정성 문제를 해결하기 위해 등장한 방법으로, Lock 인터페이스의 구현체 중 하나입니다.
-자바의 모니터 락을 사용하지 않고, 자체적으로 락과 대기 큐를 관리하며, 대기 중인 스레드는 BLOCKED 상태가 아닌 WAITING 상태로 들어간다는 특징이 있습니다. 
+자바의 모니터 락을 사용하지 않고, 자체적으로 락과 대기 큐를 관리하며, 대기 중인 스레드는 BLOCKED 상태가 아닌 WAITING 상태로 들어간다는 특징이 있습니다.
+WAITING 상태의 경우 인터럽트로 깨울 수 있어서 무한 대기 문제를 해결할 수 있고, ReentrantLock은 공정 모드와 비공정 모드를 선택할 수 있으므로
+공정 모드를 선택할 경우 공정성 문제를 해결할 수 있습니다.
 
 ### 생산자 소비자 문제를 synchronized로 해결하는 방법에 대해 설명해주세요.
 유한 버퍼 객체에 생산자를 위한 put 메서드와 소비자를 위한 take 메서드에 모두 synchronized를 걸어주고,
@@ -68,3 +70,14 @@ put 메서드로 생산에 성공했거나, take 메서드로 소비에 성공�
 BLOCKED 상태로 깨워준 뒤, 깨운 스레드가 synchronized 블록을 나가면서 모니터 락을 반납하게 되면, 깨어난 스레드는 BLOCKED에서 모니터 락을 획득해
 RUNNABLE 상태가 될 수 있는데, 이 때 소비자가 소비자를 깨운 경우에는 락을 획득해봤자 큐는 비어있으므로, 다시 잠들러 가야하는 비효율이 초래될 수 있습니다.
 -> ReentrantLock을 활용해 생산자 락과 소비자 락을 분리하고 대기 큐 또한 분리하면 된다?
+
+### 생산자 소비자 문제를 ReentrantLock으로 해결하는 방법에 대해 설명해주세요.
+ReentrantLock으로 생산자가 대기할 Condition과 소비자가 대기할 Condition을 나눠서 생성할 수 있습니다.
+생산자는 생산을 완료하고 소비자 Condition에 signal()을 호출해 소비자를 깨우고, 
+소비자는 소비를 완료하고 생산자 Condition에 signal을 호출해 생산자를 깨움으로써 
+synchronized + Object.wait() + Object.notify() 조합을 사용할 때 발생했던 비효율 문제를 해결할 수 있습니다.
+
+### BlockingQueue 인터페이스에 대해 설명해주세요.
+ReentrantLock을 활용해 생산자 소비자 문제를 해결할 수 있도록 java.util.concurrent 패키지에서 제공하는 인터페이스입니다.
+구현체로는 ArrayBlockingQueue와 LinkedBlockingQueue가 있으며
+대기 시 예외 발생, 대기 시 즉시 반환, 대기, 시간 대기 상황에 맞는 생산자 메서드와 소비자 메서드를 각각 제공합니다.
