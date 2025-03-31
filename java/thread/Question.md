@@ -63,6 +63,7 @@ synchronized의 무한 대기 문제와 공정성 문제를 해결하기 위해 
 WAITING 상태의 경우 인터럽트로 깨울 수 있어서 무한 대기 문제를 해결할 수 있고, ReentrantLock은 공정 모드와 비공정 모드를 선택할 수 있으므로
 공정 모드를 선택할 경우 공정성 문제를 해결할 수 있습니다.
 
+# 생산자 소비자
 ### 생산자 소비자 문제를 synchronized로 해결하는 방법에 대해 설명해주세요.
 유한 버퍼 객체에 생산자를 위한 put 메서드와 소비자를 위한 take 메서드에 모두 synchronized를 걸어주고,
 put 메서드에서 큐가 꽉 차있거나, take 메서드에서 큐가 비어있는 경우에 Object.wait()을 호출하여 모니터 락을 반납하면서 WAITING 상태로 들어가야 합니다.
@@ -81,3 +82,11 @@ synchronized + Object.wait() + Object.notify() 조합을 사용할 때 발생했
 ReentrantLock을 활용해 생산자 소비자 문제를 해결할 수 있도록 java.util.concurrent 패키지에서 제공하는 인터페이스입니다.
 구현체로는 ArrayBlockingQueue와 LinkedBlockingQueue가 있으며
 대기 시 예외 발생, 대기 시 즉시 반환, 대기, 시간 대기 상황에 맞는 생산자 메서드와 소비자 메서드를 각각 제공합니다.
+
+# CAS
+### AtomicInteger가 synchronized나 Lock보다 성능이 좋은 이유가 무엇인가요?
+AutomicInteger가 제공하는 incrementAndGet() 메서드는 락을 사용하지 않고, 원자적 연산을 만들기 때문입니다.
+CPU가 자체적으로 제공하는 CAS 연산을 사용하게 되며, 값을 비교하고 변경하는 사이에 해당 데이터에 대해 물리적인 락이 걸리는데,
+소프트웨어 레벨에서 락을 활용하는 것과 비교하면 매우 찰나의 시간이므로 성능 저하 부담이 덜하다는 장점이 있습니다.
+
+### CAS와 락의 차이가 무엇인가요?
