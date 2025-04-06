@@ -1,21 +1,58 @@
-### 명령어 모음
-- docker ps : 현재 실행 중인 도커 컨테이너 확인
-- docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
-  - 현재 실행 중인 컨테이너 내부에서 명령어를 실행하는 Docker CLI 명령어
-  - CONTAINER : 실행 중인 컨테이너 이름 또는 ID
-  - COMMAND : 컨테이너 내부에서 실행할 명령어
-  - [ARG...] : 명령어에 전달할 추가적인 인자
+# docker image
+### docker image 조회
+- docker image ls
+- docker images
+
+### docker image 삭제
+- docker image rm [이미지 ID]
+  - 컨테이너(중지된 컨테이너 포함)에서 사용하고 있지 않은 이미지만 삭제 가능
+  - -f 옵션 붙이면, 중지된 컨테이너에서 사용 중인 이미지도 삭제 가능
+- docker image rm $(docker images -q)
+  - 컨테이너(중지된 컨테이너 포함)에서 사용하고 있지 않은 모든 이미지 삭제
+  - -q는 id만 나오게 하는 옵션
+  - -f 옵션 붙이면, 중지된 컨테이너에서 사용 중인 이미지도 모두 삭제
+
+# docker container
+### docker container 실행
+- docker start [컨테이너 ID]
+- docker run --name my-mysql -d -p 13306:3306 -e MYSQL_ROOT_PASSWORD=password123 mysql
+  - 이미지 pull, 도커 컨테이너 생성, 도커 컨테이너 실행을 올인원으로 수행 
+
+### docker container에 bash로 접속
+- docker exec -it [컨테이너 ID] bash
   - -i 옵션 : 표준 입력을 유지하여, 컨테이너와 상호작용할 수 있도록 해주는 옵션
   - -t 옵션 : 가상의 터미널을 할당하여 터미널 환경을 제공하는 옵션
-  - 예시
-    - docker exec -it 80cd9dbf2d51 mysql -u root -p
-    - docker exec -it my-container bash
+- bash 자리에 mysql -u root -p와 같이 그냥 컨테이너에서 실행할 명령어를 바로 넣어줄 수도 있다.
 
-### 도커를 사용하는 이유
-- 개발을 하다보면 다양한 라이브러리를 사용한다.
-- 시간이 지날수록 언어의 버전도 달라지고 라이브러리도 업데이트 됨에 따라 기존에 사용하던 문법이 달라지거나 새로운 함수가 등장하기도 한다.
-- 따라서 개발자는 소프트웨어의 버전이 달라짐에 따라 안정성을 유지하기 힘들어진다.
-- 이러한 문제를 해결하기 위해 도커 컨테이너 개념을 사용한다.
+### docker container 조회
+- docker ps
+  - 현재 실행 중인 모든 컨테이너 조회
+  - -a 옵션 붙이면, 중지된 컨테이너까지 확인 가능
+
+### docker container 중지
+- docker stop [컨테이너 ID]
+- docker kill [컨테이너 ID]
+  - 컨테이너가 먹통일 때 강제종료
+
+### docker container 삭제
+- docker rm [컨테이너 ID]
+  - 중지되어 있는 컨테이너만 삭제 가능
+  - -f 옵션 붙이면 실행되고 있는 컨테이너도 삭제 가능
+- docker rm $(docker ps -qa)
+  - 중지되어 있는 모든 컨테이너 삭제
+  - -f 옵션 붙이면 실행되고 있는 컨테이너까지 모두 삭제
+
+### Docker란?
+- 컨테이너를 사용하여 각각의 프로그램을 분리된 환경에서 실행 및 관리할 수 있는 툴
+
+### 도커를 사용하는 일반적인 과정
+1. 도커 이미지 pull
+   - 예시) docker pull nginx:stable-perl
+2. 도커 이미지를 바탕으로 도커 컨테이너 생성
+3. 도커 컨테이너 실행
+- 위 3가지 과정을 한 번에 실행시키는 것이 docker run
+  - 기본적으로 포그라운드에서 실행하므로, 백그라운드 실행을 위해선 -d 옵션을 사용하자.
+  - docker run -d -p 4000:80 nginx
 
 ### 가상서버 vs 컨테이너
 - 컨테이너는 하나의 리눅스 서버가 마치 전용 서버에서 동작하고 있는 것 같은 분리 상태를 만들어 낸다.

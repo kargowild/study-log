@@ -60,3 +60,22 @@
    - 마지막 bit가 link에 올라와서 다음 라우터까지 도달하는데 걸리는 시간
    - 전자기파의 속도(빛의 속도)와 link의 길이에 의존
    - delay 개선이 불가능한 영역 
+
+### DNS
+- DNS 서버는 트리 구조를 이루고 있다.
+  - 상위 서버는 하위 서버의 IP 주소를 알고 있다.
+  - Root NS, TLD NS, Sub Domain NS로 계층이 나뉘게 된다.
+- 클라이언트가 www.staccato.com의 IP 주소를 알고 싶다면, 
+  - 클라이언트가 브라우저 캐시를 확인한다. 없으면
+  - 컴퓨터 내의 host 파일과 캐시를 확인한다. 없으면
+  - 로컬 DNS 서버(SKT와 같은 ISP가 제공)에게 질의한다. 로컬 DNS 서버는
+    - Root NS에게 질의하여 .com NS의 주소를 알아낸다.
+    - .com NS(TLD NS)에게 질의하여 staccato.com NS(Sub Domain NS)의 주소를 알아낸다.
+      - 가비아를 쓰면, ns.gabia.co.kr의 주소를 알아내고, 기관에서 직접 네임서버를 운영하면, 해당 주소를 줄 것 같다.
+    - staccato.com에게 질의하여 www.staccato.com의 주소를 알아낸다.
+      - 가비아를 쓰면, ns.gabia.co.kr에게 www.staccato.com의 주소를 질의해 알아내는 듯
+  - 로컬 DNS 서버는 www.staccato.com의 주소를 클라이언트에게 반환한다.
+- 로컬 DNS 서버는 DNS 정보를 실제로 관리하고 있지 않으므로, 권한 없는 네임서버라고 부른다.
+- Root NS, TLD NS, Sub Domain NS는 DNS 정보를 실제로 관리하고 있으므로, 권한 있는 네임서버라고 부른다. (Sub Domain NS만 해당하나?) 
+- A 타입의 레코드는 도메인 주소를 키로, IP 주소를 값으로 갖는다.
+- NS 타입의 레코드는 도메인 주소를 키로, 해당 도메인을 관리하는 Authoritative NS의 도메인명을 값으로 갖는다.
