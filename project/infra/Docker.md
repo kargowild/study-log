@@ -1,4 +1,14 @@
-# docker image
+# 실용적인 도커 사용법
+### 도커를 사용하는 일반적인 과정
+1. 도커 이미지 pull
+  - 예시) docker pull nginx:stable-perl
+2. 도커 이미지를 바탕으로 도커 컨테이너 생성
+3. 도커 컨테이너 실행
+- 위 3가지 과정을 한 번에 실행시키는 것이 docker run
+  - 기본적으로 포그라운드에서 실행하므로, 백그라운드 실행을 위해선 -d 옵션을 사용하자.
+  - docker run -d -p 4000:80 nginx
+  
+## docker image
 ### docker image 조회
 - docker image ls
 - docker images
@@ -12,7 +22,7 @@
   - -q는 id만 나오게 하는 옵션
   - -f 옵션 붙이면, 중지된 컨테이너에서 사용 중인 이미지도 모두 삭제
 
-# docker container
+## docker container
 ### docker container 실행
 - docker start [컨테이너 ID]
 - docker run --name my-mysql -d -p 13306:3306 -e MYSQL_ROOT_PASSWORD=password123 mysql
@@ -42,17 +52,59 @@
   - 중지되어 있는 모든 컨테이너 삭제
   - -f 옵션 붙이면 실행되고 있는 컨테이너까지 모두 삭제
 
+## Volume
+- 도커 컨테이너에서 데이터를 영속적으로 저장하기 위해 사용
+- 볼륨은 컨테이너 자체의 저장 공간을 사용하지 않고, 호스트의 자체의 저장 공간을 공유해서 사용하는 형태
+- docker run -v [호스트의 디렉토리 절대경로]:[컨테이너의 디렉토리 절대경로] [이미지명]:[태그명]
+  - 호스트에 이미 디렉토리가 존재하면, 이를 컨테이너에 덮어 씌운다.
+  - 호스트에 디렉토리가 존재하지 않으면, 컨테이너의 디렉토리 파일들을 호스트의 디렉토리로 복사한다.
+- mysql을 도커 컨테이너로 띄우되, 데이터가 날아가지 않도록 볼륨을 사용하는 명령어
+  - docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password123 -v /Users/minho/soma/docker-study/volume-test/my-data:/var/lib/mysql mysql
+
+## Dockerfile
+- 도커 허브에 존재하지 않는 나만의 이미지를 직접 만들어서 사용하고 싶을 때, Dockerfile을 활용
+- 예시1
+```dockerfile
+FROM ubuntu
+
+COPY app.txt /app.txt # 파일 복사
+COPY my-app /my-app/ # 디렉토리 복사
+COPY *.txt /text-files/ # 와일드 카드
+
+ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
+```
+- 예시2
+  - 아래 도커 파일로 도커 이미지를 만들기 전에, 프로젝트 경로에서 ./gradlew clean build를 수행해줘야 한다.
+  - ./gradlew clean build를 따로 수행해주기 귀찮은데, 어떻게 해결할 수 있을까? docker compose?
+```dockerfile
+FROM openjdk:17-jdk
+
+COPY build/libs/*SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+```
+
+### FROM
+- 베이스 이미지 지정
+
+### COPY
+- 호스트 컴퓨터에 있는 파일을 컨테이너로 복사
+- 파일 하나만 복사할 수도 있고, 디렉토리 전체를 복사할 수도 있다.
+- .dockerignore를 활용하면, 특정 파일 또는 폴더만 COPY의 대상에서 제외시킬 수 있다.
+
+### ENTRYPOINT
+- 컨테이너가 시작된 직후에 실행하고 싶은 명령어 지정
+
+### RUN
+- 이미지를 생성하는 과정에서 사용할 명령문 실행
+  - 명령문이 실행된 결과까지 포함하여 하나의 이미지를 생성할 수 있다.
+
+### Dokerfile을 기반으로 이미지를 만드는 명령어
+- docker build -t [이미지명:태그] [도커파일 경로]
+
+# 도커 이론
 ### Docker란?
 - 컨테이너를 사용하여 각각의 프로그램을 분리된 환경에서 실행 및 관리할 수 있는 툴
-
-### 도커를 사용하는 일반적인 과정
-1. 도커 이미지 pull
-   - 예시) docker pull nginx:stable-perl
-2. 도커 이미지를 바탕으로 도커 컨테이너 생성
-3. 도커 컨테이너 실행
-- 위 3가지 과정을 한 번에 실행시키는 것이 docker run
-  - 기본적으로 포그라운드에서 실행하므로, 백그라운드 실행을 위해선 -d 옵션을 사용하자.
-  - docker run -d -p 4000:80 nginx
 
 ### 가상서버 vs 컨테이너
 - 컨테이너는 하나의 리눅스 서버가 마치 전용 서버에서 동작하고 있는 것 같은 분리 상태를 만들어 낸다.
