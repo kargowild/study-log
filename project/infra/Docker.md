@@ -99,6 +99,11 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 - 이미지를 생성하는 과정에서 사용할 명령문 실행
   - 명령문이 실행된 결과까지 포함하여 하나의 이미지를 생성할 수 있다.
 
+### WORKDIR
+- 컨테이너 내부의 폴더를 깔끔하게 관리하기 위해 작업 디렉토리를 지정
+- WORKDIR 이후 등장하는 모든 RUN, CMD, ENTRYPOINT, COPY, ADD 명령문은 작업 디렉토리를 기준으로 실행
+- 
+
 ### Dokerfile을 기반으로 이미지를 만드는 명령어
 - docker build -t [이미지명:태그] [도커파일 경로]
 
