@@ -1,6 +1,11 @@
 # study-log
 CS 5대 과목 위주로 공부한 내용을 기록하는 저장소
 
+# 노션 + 블로그로 전환 중
+- 모든 기록을 노션과 블로그로 전환 중에 있습니다. 앞으로 커밋이 올라오지 않을 것 같습니다. (25.05.26)
+- 블로그 주소 
+- https://kargowild.tistory.com/
+
 ### 질문 작성에 참고한 레포지토리
 https://github.com/4z7l/tech_interview.zip/blob/main/
 
